@@ -11,6 +11,7 @@ If there isn't a plugins folder there already, create one. Unzip the plugin into
 
 CLI:
     /targetless --> options config and quick-select binds setup.
+    /tl
 
 Author: Adrian (drazed) Zakrzewski
 contact: drazed@gmail.com
