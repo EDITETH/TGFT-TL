@@ -176,39 +176,6 @@ function targetless.Controller:switchback()
         end
     end
 
-function targetless.Controller:joyswitch()
-  if joystick.GetJoystickSingleAxisRawValue(targetless.var.joystickmodeport-1,targetless.var.joystickmodaxis) < 0 then
-      targetless.Controller:switch()
-      targetless.Controller:switch()
-      targetless.Controller:switch()
-      targetless.Controller:switch()
-      targetless.Controller:switch()
-      targetless.Controller:switch()
-      targetless.Controller:switch()
-  elseif joystick.GetJoystickSingleAxisRawValue(targetless.var.joystickmodeport-1,targetless.var.joystickmodaxis) > 0 then
-      targetless.Controller:switch()
-    end
-end
-
-function targetless.Controller:switch()
-  local modeswitched = false
-  local modenumber = 0
-  for x = 1, 8 do
-    if targetless.var.modeconvert[x]==self.mode then
-      modenumber=x
-    end
-  end
-  while not modeswitched do
-    modenumber=modenumber+1
-    if modenumber > 8 then
-      modenumber = 1
-    end
-    if targetless.var.modeoption[modenumber] == "ON" then
-      self.mode=targetless.var.modeconvert[modenumber]
-      modeswitched=true
-    end
-  end
-
     local statuscolor = "155 155 155"
     if(self.fstatus == 2) then statuscolor = "155 32 32"
     elseif(self.fstatus == 1) then statuscolor = "32 155 32"
@@ -219,7 +186,7 @@ function targetless.Controller:switch()
     end
     self.totals.pvplabel.fgcolor = FactionColor_RGB[GetPlayerFaction()]
     self.totals.pvelabel.fgcolor = FactionColor_RGB[GetPlayerFaction()]
-    self.totals.pveblabel.fgcolor =FactionColor_RGB[GetPlayerFaction()]
+    self.totals.pveblabel.fgcolor = FactionColor_RGB[GetPlayerFaction()]
     self.totals.orelabel.fgcolor = FactionColor_RGB[GetPlayerFaction()]
     self.totals.guardlabel.fgcolor = FactionColor_RGB[GetPlayerFaction()]
     self.totals.stturretlabel.fgcolor = FactionColor_RGB[GetPlayerFaction()]
@@ -596,20 +563,12 @@ function targetless.Controller:cyclestatus()
         self.totals.roids.fgcolor = activestatuscolor
     elseif(self.mode == "Guard") then
         self.totals.guardlabel.fgcolor = "255 255 255"
-	self.totals.guard.fgcolor = activestatuscolor
+	    self.totals.guard.fgcolor = activestatuscolor
     elseif(self.mode == "StTurret") then
         self.totals.stturretlabel.fgcolor = "255 255 255"
-	self.totals.stturret.fgcolor = activestatuscolor
+	    self.totals.stturret.fgcolor = activestatuscolor
     end
     self:update()
-end
-
-function targetless.Controller:targetjoy()
-  if joystick.GetJoystickSingleAxisRawValue(targetless.var.joysticktarport-1,targetless.var.joysticktaraxis) < 0 then
-      targetless.Controller:targetprev()
-  elseif joystick.GetJoystickSingleAxisRawValue(targetless.var.joysticktarport-1,targetless.var.joysticktaraxis) > 0 then
-      targetless.Controller:targetnext()
-  end
 end
 
 function targetless.Controller:targetprev()
@@ -734,4 +693,26 @@ function targetless.Controller:update()
         self:switchbuffers()
         targetless.var.lock = nil
    end
+end
+
+function targetless.Controller:targetjoy()
+  if joystick.GetJoystickSingleAxisRawValue(targetless.var.joysticktarport-1,targetless.var.joysticktaraxis) < 0 then
+      targetless.Controller:targetprev()
+  elseif joystick.GetJoystickSingleAxisRawValue(targetless.var.joysticktarport-1,targetless.var.joysticktaraxis) > 0 then
+      targetless.Controller:targetnext()
+  end
+end
+
+function targetless.Controller:joyswitch()
+  if joystick.GetJoystickSingleAxisRawValue(targetless.var.joystickmodeport-1,targetless.var.joystickmodaxis) < 0 then
+      targetless.Controller:switch()
+      targetless.Controller:switch()
+      targetless.Controller:switch()
+      targetless.Controller:switch()
+      targetless.Controller:switch()
+      targetless.Controller:switch()
+      targetless.Controller:switch()
+  elseif joystick.GetJoystickSingleAxisRawValue(targetless.var.joystickmodeport-1,targetless.var.joystickmodaxis) > 0 then
+      targetless.Controller:switch()
+    end
 end
