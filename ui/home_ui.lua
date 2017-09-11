@@ -5,7 +5,7 @@ targetless.ui.home.logo = {}
 targetless.ui.home.logo.logo = iup.label{title = "logo.png",image=targetless.var.IMAGE_DIR.."logo.png"}
 targetless.ui.home.logo.tab = iup.vbox{
     targetless.ui.home.logo.logo,
-    iup.label{title="Created by Adrian (drazed@gmail.com) Zakrzewski\nhttp://targetless.com/"},
+    iup.label{title="Created by Adrian (drazed@gmail.com) Zakrzewski\nhttp://targetless.com/\n\nEnhanced and Adopted for TGFT by RioRicki and DimmyR\nhttps://github.com/dimmyr/TGFTTL"},
 	margin="2x2",
 	tabtitle="Author",
 	hotkey=iup.K_u,
